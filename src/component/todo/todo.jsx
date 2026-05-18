@@ -1,3 +1,4 @@
+import { List } from '../list/List'
 import { useState } from 'react'
 import style from './todo.module.css'
 
@@ -12,7 +13,9 @@ function ToDo(){
 
     let dataAdd = (e) => {
         e.preventDefault()
-        setData((rev) => {
+
+        if(text.trim()){
+            setData((rev) => {
             return [
                ...rev,
                 {
@@ -23,18 +26,22 @@ function ToDo(){
             ]
         })
         setText('')
+        }
+        
     }
-
+    
     return(
-        <>
+        <div className={style.block}>
+            <div className={style.editor}>
             <form onSubmit={dataAdd}>
-                <input onChange={creatData} value={text} type="text"/>
+                <input onChange={creatData} placeholder='Enter Your text...' value={text} type="text"/>
                 <button>Add</button>
             </form>
-            <div>
-            
+            <div className={style.coment}>
+                <List data={data} changer = {setData}/>
             </div>
-        </>
+            </div>
+        </div>
     )
 }
 

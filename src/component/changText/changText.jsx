@@ -31,7 +31,7 @@ function ChangText ({ bool,setBool,changer,id }){
             <div className={style.content}>
                 <h1>Edit text</h1>
                 <form onSubmit={textChanger}>
-                    <input onChange={titleText} value={newText} type="text" />
+                    <input placeholder='Edit' onChange={titleText} value={newText} type="text" />
                     <button>Edit</button>
                 </form>
             </div>
